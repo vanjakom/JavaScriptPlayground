@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="underscore.js"></script>
+		<script type="text/javascript" src="backbone.js"></script>
+		<script type="text/javascript">
+			var set = "false";
+			var Phone = Backbone.Model.extend({
+				//defaults: {
+				//	"number": "777 777 777",
+				//	"name": "vanja"
+				//}
+				
+				initDefault: function() {
+					this.set({"name": "Some gay"});
+					this.set({"number": "777 777 777"});
+				}
+			});
+			var phone = new Phone;
+
+			$(document).ready(function () {
+				phone.bind("change:name", function (model, name) {
+					$("#phonename").text(name);
+				});
+				phone.bind("change:number", function (model, number) {
+					$("#phonenumber").text(number);
+				});
+				phone.initDefault();
+				//$("#phonename").text(phone.get("name"));
+				//$("#phonenumber").text(phone.get("number"));				
+
+				$("#hello").text("Changed from jquery");
+				console.log(document);
+				//console.log(document.getElementById));
+				document.getElementById("hello").innerHTML = "Changed";
+			});
+
+			function testCall () {
+				phone.set({"name": "Vanja"});
+				phone.set({"number": "888 888 888"});
+				if (set == "false") {
+					$("#warning").text("Hey");
+					set = "true";
+				} else {
+					$("#warning").text("Hello");
+					set = "false";
+				}
+			};
+		</script>
+	</head>
+	<body>
+		Hello world
+		<div id="hello">
+			Sample text		
+		</div>
+		<input type="button" value="Change" onclick="testCall()"</input>		
+		<div id="warning">
+			Sample text		
+		</div>
+		<br />
+		<br />
+		Phone example:
+		<div>
+			<div style="float: left">Name: </div><div id="phonename">Name</div>		
+			<div style="float: left">Number: </div><div id="phonenumber">Number</div>
+		</div>
+	</body>
+</html>
