@@ -8,7 +8,8 @@ var options = {
 	method: 'GET',
 	key: fs.readFileSync("keys/userB.key"),
 	cert: fs.readFileSync("certs/userB.crt"),
-	ca: fs.readFileSync("ca/ca.crt")
+	ca: fs.readFileSync("ca/ca.crt"),
+	rejectUnauthorized: false
 };
 
 var req = https.request(options, function(res) {
