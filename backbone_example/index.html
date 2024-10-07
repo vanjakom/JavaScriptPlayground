@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="backbone.js"></script>
+		<script type="text/javascript" src="underscore.js"></script>
+
+		<script type="text/javascript">
+			var Task = Backbone.Model.extend({
+				initialize: function() {
+						alert("Model initialized");
+					}
+			});
+			
+			function onItemClick(sender) {
+				//TODO fill edit
+				
+				$("#status_bar_save").show();
+				$("#status_bar_cancel").show();				
+				$("#list_editor").show();
+			}
+			
+			function onItemCheckBoxClick(sender) {
+				alert("Checkbox on item: " + sender);
+			}
+			
+			function onItemListClick(sender) {
+				alert("List on item: " + sender);			
+			}
+			
+			function onStatusSync() {
+				alert("Sync");
+			}
+			
+			function onStatusSave() {				
+				$("#status_bar_save").hide();
+				$("#status_bar_cancel").hide();
+				$("#list_editor").hide();
+				
+				//TODO save
+			}
+			
+			function onStatusCancel() {				
+				$("#status_bar_save").hide();
+				$("#status_bar_cancel").hide();
+				$("#list_editor").hide();
+			}
+		</script>
+	</head>
+	<body>
+		Simple Backbone.js example<br/><br/>
+		<div class="list" id="tasks" style="background-color: #D1E0E0; width: 400px; height: 300px">
+			<div class="list_item" id="item1" style="background-color: #C2C2C6; width: 400px; clear: both">
+				<div style="float: left">
+					<input type="checkbox" onClick='javascript:onItemCheckboxClick("tasks.item1")'/>
+				</div>
+				<div style="float: left">
+					<a href='javascript:onItemClick("tasks.item1")'>Buy soda</a>
+				</div>
+				<div style="float: right">
+					<a href='javascript:onItemListClick("tasks.item1")'>Shopping</a>
+				</div>
+			</div>
+			<div class="list_item" id="item2" style="background-color: #F0F0F0; width: 400px; clear: both">
+				<div style="float: left">
+					<input type="checkbox" onClick='javascript:onItemCheckboxClick("tasks.item2")'/>
+				</div>
+				<div style="float: left">
+					<a href='javascript:onItemClick("tasks.item2")'>Buy juice</a>
+				</div>
+				<div style="float: right">
+					<a href='javascript:onItemListClick("tasks.item1")'>Shopping</a>
+				</div>
+			</div>
+			<div class="list_item" id="item2" style="background-color: #C2C2C6 width: 400px; clear: both">
+				<div style="float: left">
+					<input type="checkbox" onClick='javascript:onItemCheckboxClick("tasks.item3")'/>
+				</div>
+				<div style="float: left">
+					<a href='javascript:onItemClick("tasks.item3")'>Buy boxes</a>
+				</div>
+				<div style="float: right">
+					<a href='javascript:onItemListClick("tasks.item1")'>Shopping</a>
+				</div>
+			</div>			
+		</div>
+		<div class="status_bar" style="background-color: #999966; width: 400px; height: 30px">
+			<div id="status_bar_save" style="margin: 5px; float: left; display: none; width: 40px">
+				<a href="javascript:onStatusSave()">Save</a>
+			</div>
+			<div id="status_bar_cancel" style="margin: 5px; float: left; display: none; width: 40px">
+				<a href="javascript:onStatusCancel()">Cancel</a>
+			</div>	
+			<div id="status_bar_sync" style="margin: 5px; float: right; width: 40px">
+				<a href="javascript:onStatusSync()">Sync</a>
+			</div>
+		</div>
+		<div class="list_editor" id="list_editor" style="background-color: #FFFFA3; width: 400px; height: 150px; display: none">
+			<div style="margin: 5px; width: 390px">
+				Description:<br/>
+			</div>
+			<input type="text" style="margin: 5px; width: 390px"></input>
+			<br />
+			<div style="margin: 5px; width: 200px">
+				List:<br/>
+			</div>
+			<select style="margin: 5px; width: 200px">
+				<option value="shopping">Shopping</option>
+				<option value="home">Home</option>
+				<option value="vast">Vast</option>
+			</select>
+		</div>
+	</body>
+</html>
